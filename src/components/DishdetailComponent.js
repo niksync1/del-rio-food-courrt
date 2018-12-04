@@ -7,10 +7,6 @@ class DishDetail extends Component {
         super(props);
     };
 
-    componentDidMount() {
-        console.log("Mounted");
-    };
-
     renderDish(dish) {
         if (dish != null)
             return (
@@ -37,7 +33,7 @@ class DishDetail extends Component {
                             <p>{comment.comment}</p>
                         </Media>
                         <Media tag="li">
-                            -- {comment.author}, {new Intl.DateTimeFormat('en-US',
+                        {comment.author} , {new Intl.DateTimeFormat('en-US',
                                 { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}
                         </Media>
                     </Media>
