@@ -68,6 +68,7 @@ import {Media} from 'reactstrap';
                 </div>
             </div>
         );
+    )
 }
 
 
