@@ -1,13 +1,8 @@
-import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Media } from 'reactstrap';
+import React from 'react';
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import {Media} from 'reactstrap';
 
-class DishDetail extends Component {
-
-    constructor(props) {
-        super(props);
-    };
-
-    renderDish(dish) {
+   function RenderDish(dish) {
         if (dish != null)
             return (
                 <Card>
@@ -21,11 +16,12 @@ class DishDetail extends Component {
         else
             return (
                 <div></div>
-            );
-    };
+                    );
+    }
 
-    renderComments(commentsArr) {
+    function RenderComments(commentsArr) {
         if (commentsArr != null) {
+            //comments constant loaded from render comments gets mapped 
             const comments = commentsArr.map((comment) => {
                 return (
                     <Media list key={comment.id} className="list-unstyled">
@@ -50,27 +46,29 @@ class DishDetail extends Component {
         } else {
             return (<div></div>);
         }
-    };
+    }
 
-    render() {
+   const DishDetail = (props) => {
 
-        let comments;
-        if (this.props.dish != null) {
-            comments = this.renderComments(this.props.dish.comments);
-        };
+    // function Render() {
+
+        // let comments;
+        // if (this.props.dish != null) {
+        //comments variable gets loaded with dish comments on click
+
+        const comments = RenderComments((props.dish.comments)       
 
         return (
             <div className="row">
                 <div className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.props.dish)}
+                    < RenderDish(this.props.dish)/>
                 </div>
                 <div className="col-12 col-md-5 m-1">
                     {comments}
                 </div>
             </div>
         );
-    };
+}
 
-};
 
 export default DishDetail;
