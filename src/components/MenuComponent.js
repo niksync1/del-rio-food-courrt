@@ -25,7 +25,7 @@ const Menu = (props) => {
                 <RenderMenuItem dish={dish}
                 //  onClick={props.onClick}
                   />
-        </div>
+            </div>
             );
         });
             return (
