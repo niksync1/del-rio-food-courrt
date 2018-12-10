@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, } from 'reactstrap';
 import {Link} from 'react-router-dom';
 // import {Media} from 'reactstrap';
 
@@ -19,34 +19,37 @@ import {Link} from 'react-router-dom';
     }
 
     function RenderComments({comments}) {
-        if (comments != null) 
-            //comments constant loaded from render comments gets mapped 
+       if (comments != null) 
             return (
-                <div className="col-12 col-md-5 m-1">
+                    <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    <ul className="list-unstyled">
-                        {comments.map((comment) => {
-                         return (
-                           <li key={comment.id}>
-                           <p>{comment.comment}</p>
-                           <p>-- {comment.author} {new Intl.DateTimeFormat('en-US',{ year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>
-                           </li>
-                                 ); 
-                            })
-                        }
+                    <ul  className= "list-unstyled" >
+                        {comments.map((comment) =>{
+                            return(
+                                <li key={comment.id}>
+                                <p>{comment.comment}</p>
+                                <p>--{comment.author}</p>
+                                </li>
+                            );
+                        })}
+                                                                
                     </ul>
-                </div>
-            );
-        else
-        return (
-            <div></div>
-        );
-    }
+                    </div>
+                );
+            }
+                   
+        
+                    
+        // else
+        // return (
+        //     <div></div>
+        // );
+    
     
 
    const DishDetail = (props) => {
          if (props.dish != null) 
-             return(
+             return (
                 <div class="container">
                     <div className="row">
                         <Breadcrumb>
@@ -61,9 +64,8 @@ import {Link} from 'react-router-dom';
                     </div>
                     <div className="row">
                         
-                            <RenderDish dish={props.dish} />
-                        
-                            <RenderComments comments={props.comments} />
+                            <RenderDish dish={props.dish} />                        
+                            <RenderComments comment={props.comments} />
                         
                     </div>
                 </div>
