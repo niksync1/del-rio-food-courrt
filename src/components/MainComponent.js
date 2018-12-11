@@ -25,11 +25,9 @@ import { connect } from 'react-redux';
     //   promotions: PROMOTIONS,
     //   leaders: LEADERS
     // };
-
-
-  // onDishSelect(dishId) {
-  //   this.setState({ selectedDish: dishId});
-  // }
+    // onDishSelect(dishId) {
+    //   this.setState({ selectedDish: dishId});
+    // }
   const mapStateToProps = state => {
     return {
       dishes: state.dishes,
@@ -39,9 +37,7 @@ import { connect } from 'react-redux';
     }
   }
 
-  class Main extends Component {
-
-    
+class Main extends Component {    
   render() {
     const HomePage= () => {
       return(
