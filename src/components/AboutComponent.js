@@ -5,32 +5,30 @@ import { Link } from 'react-router-dom';
 function About(props) {
 
    
-function  RenderLeader({leader}) {
-    return (
-        <div key={leader.id} className= "row row-content">
-            {/* <div className="col-12 col-md-2"> */}
-               <Media tag="li">
-                    <Media left middle>
-                        <Media object src={leader.image} alt={leader.name}/>
+    function  RenderLeader({leader}) {
+        return (
+            <div key={leader.id} className= "row row-content">
+                {/* <div className="col-12 col-md-2"> */}
+                <Media tag="li">
+                        <Media left middle>
+                            <Media object src={leader.image} alt={leader.name}/>
+                        </Media>
+                {/* </div> */}
+                {/* <div className="col-12 col-md-10 mt-1"> */}
+                        <Media body className="ml-5">
+                            <h4> {leader.name}</h4>
+                            <p>{leader.designation}</p>
+                            <p>{leader.description}</p>                
+                        </Media>
                     </Media>
-            {/* </div> */}
-            {/* <div className="col-12 col-md-10 mt-1"> */}
-                    <Media body className="ml-5">
-                        <h4> {leader.name}</h4>
-                        <p>{leader.designation}</p>
-                        <p>{leader.description}</p>                
-                    </Media>
-                </Media>
-            {/* </div> */}
-        </div>
-        
-    );
-}
-
+                {/* </div> */}
+            </div>
+            
+        );
+    }
  const leaders = props.leaders.map((leader) => {
         return (  <RenderLeader leader = {leader} />);
     });
-
     return(
         <div className="container">
             <div className="row">
