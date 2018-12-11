@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Media } from 'reactstrap';
 import {Link} from 'react-router-dom';
-// import {Media} from 'reactstrap';
 
    function RenderDish({dish}) {
         
@@ -18,27 +17,46 @@ import {Link} from 'react-router-dom';
             );       
     }
 
-    function RenderComments({comment}) {
-       if (comment != null) {
+    function RenderComments(commentsArr) {
+       if (commentsArr != null) {
+        const commentItem = commentsArr.map((comment) => {
+            return ( 
+                            
+            <Media list key= {comment.id} className="list-unstyled">
+                <Media tag= "li">
+                    <p>{comment.comment}</p>
+                </Media>
+                <Media tag= "li">
+                {comment.author} , {new Intl.DateTimeFormat('en-US',
+                                { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}
+                </Media>
+            </Media>          
+            
+            );
+        } );
             return (
-                    <div key={comment.id} >
-                        <h4>Comments</h4>
-                            <ul  className= "list-unstyled">                                  
-                                <p>{comment.comment}</p>
-                                <p>--{comment.author}, {new Intl.DateTimeFormat('en-US',
-                                { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(Date.parse(comment.date)))}</p>                                                                      
-                            </ul>
+                    <div>
+                        <Media>
+                            <h4>Comments</h4>
+                        </Media>
+                        {commentItem}
                     </div>
                 );
             }
             else 
              return (<div></div>);
         }
-        
+        // const commentItem = props.comments.map((comment) => {
+        //     return ( <RenderComments comment={comment} />
+              
+        //     );
+        // } )     
     
 
    const DishDetail = (props) => {
-         if (props.dish != null) 
+          let commentItem;
+          commentItem = RenderComments(props.comments)
+        if (props.dish != null)
              return (
                 <div class="container">
                     <div className="row">
@@ -57,7 +75,7 @@ import {Link} from 'react-router-dom';
                               <RenderDish dish={props.dish} />  
                             </div>
                             <div className="col-12 col-md-6">                     
-                                <RenderComments comment={props.comments} />
+                                {commentItem} 
                             </div>                        
                     </div>
                 </div>
