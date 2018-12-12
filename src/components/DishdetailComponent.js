@@ -92,12 +92,12 @@ class DishDetail extends Component{
                                                     />
                                                 <Errors
                                                     className="text-danger"
-                                                    model=".name"
+                                                    model=".author"
                                                     show="touched"
                                                     messages={{
                                                         required: 'Required',
                                                         minLength: 'Must be greater than 2 characters',
-                                                        maxLength: 'Must be 20 characters or less'
+                                                        maxLength: 'Must be 15 characters or less'
                                                     }}
                                                 />
                                             </Col>
