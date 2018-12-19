@@ -1,0 +1,91 @@
+BEGIN:VCALENDAR
+METHOD:REQUEST
+PRODID:Microsoft Exchange Server 2010
+VERSION:2.0
+BEGIN:VTIMEZONE
+TZID:Pacific Standard Time
+BEGIN:STANDARD
+DTSTART:16010101T020000
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=1SU;BYMONTH=11
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010101T020000
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=2SU;BYMONTH=3
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+ORGANIZER;CN=Bess Harris (Aquent LLC):MAILTO:v-beharr@microsoft.com
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=Nicholas A
+ damu-Amanfu :MAILTO:nick18gh@yahoo.com
+DESCRIPTION;LANGUAGE=en-US:Hi Nick\,\n\nThank you for signing up for the Az
+ ure Mobile app interview.\n\nI’m including a link (below) where you can 
+ join the Microsoft Teams Meeting for the interview. There is a phone numbe
+ r too\, which you can use to join by phone if you prefer.\n\nLooking forwa
+ rd to talking with you!\n\n\nThanks\,\n\nBess Harris\nUX Researcher | Micr
+ osoft Azure\n\n___________________________________________________________
+ _____________________\nJoin Microsoft Teams Meeting<https://teams.microsof
+ t.com/l/meetup-join/19%3ameeting_OTE4Y2VkNGEtNDhjYS00YWUxLWE4M2QtMjBmNGViM
+ 2VmYTc5%40thread.skype/0?context=%7b%22Tid%22%3a%2272f988bf-86f1-41af-91ab
+ -2d7cd011db47%22%2c%22Oid%22%3a%2287fdb64d-7076-4ddc-8832-01c3828a3902%22%
+ 7d>\n+1 323-849-4874<tel:+1%20323-849-4874\,\,40996500#>   United States\,
+  Los Angeles (Toll)\nConference ID: 409 965 00#\nLocal numbers<https://dia
+ lin.teams.microsoft.com/8551f4c1-bea3-441a-8738-69aa517a91c5?id=40996500> 
+ | Reset PIN<https://mysettings.lync.com/pstnconferencing> | Learn more abo
+ ut Teams<https://go.microsoft.com/fwlink/?linkid=857250>\n________________
+ ________________________________________________________________\n\nEvent 
+ Name: Azure Mobile App\n\n20-minute\, 1 on 1 remote interview via Microsof
+ t Teams.\n\nLocation: Microsoft Teams\n\nNeed to make changes to this even
+ t? Cancel<https://calendly.com/cancellations/EGGUYAKNX7IIBWMT> or Reschedu
+ le<https://calendly.com/reschedulings/EGGUYAKNX7IIBWMT>\n\nPowered by Cale
+ ndly<https://calendly.com/>\n\n
+UID:040000008200E00074C5B7101A82E0080000000020AB441F4C96D401000000000000000
+ 010000000A7D64A8DD800AF40B7FD14D934EB6A0E
+SUMMARY;LANGUAGE=en-US:Nicholas Adamu-Amanfu  and v-beharr
+DTSTART;TZID=Pacific Standard Time:20181219T090000
+DTEND;TZID=Pacific Standard Time:20181219T092000
+CLASS:PUBLIC
+PRIORITY:5
+DTSTAMP:20181217T210623Z
+TRANSP:OPAQUE
+STATUS:CONFIRMED
+SEQUENCE:1
+LOCATION;LANGUAGE=en-US:Microsoft Teams
+X-MICROSOFT-CDO-APPT-SEQUENCE:1
+X-MICROSOFT-CDO-OWNERAPPTID:2116847648
+X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE
+X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-CDO-INSTTYPE:0
+X-MICROSOFT-SKYPETEAMSMEETINGURL:https://teams.microsoft.com/l/meetup-join/
+ 19%3ameeting_OTE4Y2VkNGEtNDhjYS00YWUxLWE4M2QtMjBmNGViM2VmYTc5%40thread.sky
+ pe/0?context=%7b%22Tid%22%3a%2272f988bf-86f1-41af-91ab-2d7cd011db47%22%2c%
+ 22Oid%22%3a%2287fdb64d-7076-4ddc-8832-01c3828a3902%22%7d
+X-MICROSOFT-SCHEDULINGSERVICEUPDATEURL:https://sched.services.skype.net/tea
+ ms/72f988bf-86f1-41af-91ab-2d7cd011db47/87fdb64d-7076-4ddc-8832-01c3828a39
+ 02/19_meeting_OTE4Y2VkNGEtNDhjYS00YWUxLWE4M2QtMjBmNGViM2VmYTc5@thread.skyp
+ e/0
+X-MICROSOFT-SKYPETEAMSPROPERTIES:{"cid":"19:meeting_OTE4Y2VkNGEtNDhjYS00YWU
+ xLWE4M2QtMjBmNGViM2VmYTc5@thread.skype"\,"private":true\,"type":0\,"mid":0
+ \,"rid":0}
+X-MICROSOFT-ONLINEMEETINGCONFLINK:conf:sip:v-beharr@microsoft.com\;gruu\;op
+ aque=app:conf:focus:id:teams:2:0!19:meeting_OTE4Y2VkNGEtNDhjYS00YWUxLWE4M2
+ QtMjBmNGViM2VmYTc5-thread.skype!87fdb64d70764ddc883201c3828a3902!72f988bf8
+ 6f141af91ab2d7cd011db47
+X-MICROSOFT-DONOTFORWARDMEETING:FALSE
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MICROSOFT-LOCATIONS:[{"DisplayName":"Microsoft Teams"\,"LocationAnnotatio
+ n":""\,"LocationUri":""\,"LocationStreet":""\,"LocationCity":""\,"Location
+ State":""\,"LocationCountry":""\,"LocationPostalCode":""\,"LocationFullAdd
+ ress":""}]
+BEGIN:VALARM
+DESCRIPTION:REMINDER
+TRIGGER;RELATED=START:-PT15M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR
