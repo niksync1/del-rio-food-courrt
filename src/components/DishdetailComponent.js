@@ -41,7 +41,8 @@ const required = (val) => val && val.length;
                         )
                     })}
                     </ul>
-                    <CommentForm dishId={dishId} addComment={addComment} />
+                    <CommentForm dishId={dishId} 
+                                addComment={addComment} />
                 </div>
             );
         else 
@@ -185,9 +186,8 @@ const DishDetail = (props) => {
                 <div className="row">
                     <RenderDish dish={props.dish} />
                     <RenderComments comments={props.comments} 
-                    addComment={props.addComment}
-                    dishId={props.dish.id}
-                    />
+                                    addComment={props.addComment}
+                                    dishId={props.dish.id}  />
                 </div>            
             </div>
 

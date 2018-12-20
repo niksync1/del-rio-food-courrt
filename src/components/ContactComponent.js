@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Breadcrumb, BreadcrumbItem, Button,  Label,  Col, Row  } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {Control, Form, Errors, actions} from 'react-redux-form';
+import {Control, Form, Errors, } from 'react-redux-form';
 
 
 const required = (val) => val && val.length;
@@ -165,8 +165,8 @@ class Contact extends Component {
                                     <Col md={{size: 6, offset: 2}}>
                                         <div className="form-check">
                                             <Label check>
-                                                <Control.checkbox model="agree"
-                                                    name="agree"
+                                                <Control.checkbox model=".agree"  name="agree"
+                                                    className="form-check"
                                                     checked={this.props.agree}
                                                     onChange={this.handleInputChange} /> {' '}
                                                 <strong>May we contact you?</strong>
