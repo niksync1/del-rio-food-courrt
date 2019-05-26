@@ -27,7 +27,7 @@ class Header extends Component {
                             <NavbarToggler onClick={this.toggleNav} />
 
                             <NavbarBrand className="mr-auto" href="/">
-                                < img src="assets/images/logo.png" height="30" width="41"  alt= "Ristorante Con Fusion"/>
+                                < img src="assets/images/logo.png" height="30" width="41"  alt= "Del Rio Food Court"/>
                             </NavbarBrand>
                             <Collapse isOpen={this.state.isNavOpen} navbar>
                                 <Nav navbar>
@@ -51,7 +51,7 @@ class Header extends Component {
                         <div className="container">
                             <div className= "row row-header">
                                 <div className="col-12 col-sm-6">
-                                    <h1>Ristorante con Fusion</h1>
+                                    <h1>Del Rio </h1>
                                     <p>We take inspiration from the World's best cuisines, 
                                         and create a unique fusion experience. Our lipsmacking
                                         creations will tickle your culinary senses!</p>                            

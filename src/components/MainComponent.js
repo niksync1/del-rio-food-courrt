@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-//import { Navbar, NavbarBrand } from 'reactstrap';
 import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import DishDetail from './DishdetailComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-//import About from './AboutComponent (martijn)';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import { DISHES } from '../shared/dishes';
@@ -27,10 +25,6 @@ class Main extends Component {
     };
   }
 
-  // onDishSelect(dishId) {
-  //   this.setState({ selectedDish: dishId});
-  // }
-
   render() {
     const HomePage= () => {
       return(
@@ -43,7 +37,7 @@ class Main extends Component {
     }
     const DishWithId = ({match}) => {
       return(
-        <DishDetail dish    =  {this.state.dishes.filter((dish) =>         dish.id === parseInt(match.params.dishId,10))[0]} 
+        <DishDetail dish =  {this.state.dishes.filter((dish) =>dish.id === parseInt(match.params.dishId,10))[0]} 
                     comments = {this.state.comments.filter ((comment) =>comment.dishID === parseInt(match.params.dishId,10))[0]} />
       );
     };
