@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import { Dishes } from './dishes';
 import { Comments } from './comments';
@@ -22,5 +23,15 @@ export const ConfigureStore = () => {
         }),
     applyMiddleware(thunk, logger));
 
+=======
+import { createStore} from 'redux';
+import {Reducer, initialState} from './reducer';
+
+export const ConfigureStore = () => {
+    const store = createStore(
+        Reducer,
+        initialState,
+    );
+>>>>>>> a93f413
     return store;
 }

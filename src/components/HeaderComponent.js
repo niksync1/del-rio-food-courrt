@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label } from 'reactstrap';
 import {NavLink } from 'react-router-dom';
 
+
 class Header extends Component {
 
     constructor(props){
@@ -22,6 +23,7 @@ class Header extends Component {
             isNavOpen: !this.state.isNavOpen
         });
     }
+<<<<<<< HEAD
     toggleModal() {
         this.setState({
           isModalOpen: !this.state.isModalOpen
@@ -35,6 +37,20 @@ class Header extends Component {
         event.preventDefault();
       }
 
+=======
+
+    toggleModal(){
+            this.setState({
+                isModalOpen: !this.state.isModalOpen
+            });
+    }
+
+    handleLogin(event) {
+        this.toggleModal();
+        // this.props.loginUser({username: this.username.value, password: this.password.value});
+        event.preventDefault();
+    }
+>>>>>>> a93f413
     render(){
         return(
             <div>                
@@ -43,7 +59,11 @@ class Header extends Component {
                             <NavbarToggler onClick={this.toggleNav} />
 
                             <NavbarBrand className="mr-auto" href="/">
+<<<<<<< HEAD
                                 < img src="./assets/images/logo.png" height="30" width="41"  alt= "Ristorante Con Fusion"/>
+=======
+                                < img src="assets/images/logo.png" height="30" width="41"  alt= "Del Rio Food Court"/>
+>>>>>>> a93f413
                             </NavbarBrand>
                             <Collapse isOpen={this.state.isNavOpen} navbar>
                                 <Nav navbar>
@@ -57,9 +77,38 @@ class Header extends Component {
                                         <NavLink className="nav-link"  to='/menu'><span className="fa fa-list fa-lg"></span> Menu</NavLink>
                                     </NavItem>
                                     <NavItem>
+                                    <NavLink className="nav-link" to="/favorites"><span className="fa fa-heart fa-lg"></span> My Favorites
+                                    </NavLink>
+                                    </NavItem>
+                                    <NavItem>
                                         <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
                                     </NavItem>
                                 </Nav>
+                                <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    {/* { !this.props.auth.isAuthenticated ? */}
+                                        <Button outline onClick={this.toggleModal}>
+                                            <span className="fa fa-sign-in fa-lg"></span> Login
+                                            {/* {this.props.auth.isFetching ?
+                                                <span className="fa fa-spinner fa-pulse fa-fw"></span>
+                                                : null
+                                            } */}
+                                        </Button>
+                                        {/* :
+                                        <div>
+                                        <div className="navbar-text mr-3">{this.props.auth.user.username}</div>
+                                        <Button outline onClick={this.handleLogout}>
+                                            <span className="fa fa-sign-out fa-lg"></span> Logout
+                                            {this.props.auth.isFetching ?
+                                                <span className="fa fa-spinner fa-pulse fa-fw"></span>
+                                                : null
+                                            }
+                                        </Button>
+                                        </div>
+                                    } */}
+
+                                </NavItem>
+                            </Nav>
                             </Collapse>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
@@ -73,7 +122,7 @@ class Header extends Component {
                         <div className="container">
                             <div className= "row row-header">
                                 <div className="col-12 col-sm-6">
-                                    <h1>Ristorante con Fusion</h1>
+                                    <h1>Del Rio </h1>
                                     <p>We take inspiration from the World's best cuisines, 
                                         and create a unique fusion experience. Our lipsmacking
                                         creations will tickle your culinary senses!</p>                            
@@ -81,6 +130,7 @@ class Header extends Component {
                             </div>
                         </div>
                     </Jumbotron>
+<<<<<<< HEAD
 
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
@@ -108,6 +158,33 @@ class Header extends Component {
                     </ModalBody>
                 </Modal>
                 
+=======
+                    <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                        <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
+                        <ModalBody>
+                            <Form onSubmit={this.handleLogin}>
+                                <FormGroup>
+                                    <Label htmlFor="username">Username</Label>
+                                    <Input type="text" id="username" name="username"
+                                        innerRef={(input) => this.username = input} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input type="password" id="password" name="password"
+                                        innerRef={(input) => this.password = input}  />
+                                </FormGroup>
+                                <FormGroup check>
+                                    <Label check>
+                                        <Input type="checkbox" name="remember"
+                                        innerRef={(input) => this.remember = input}  />
+                                        Remember me
+                                    </Label>
+                                </FormGroup>
+                                <Button type="submit" value="submit" color="primary">Login</Button>
+                            </Form>
+                        </ModalBody>
+                    </Modal>
+>>>>>>> a93f413
             </div>
         )}
     

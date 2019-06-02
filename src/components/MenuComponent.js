@@ -10,10 +10,15 @@ function RenderMenuItem({dish, onClick}) {
                    {/* /*onClick={() => onClick(dish.id)}*/ }
                        
                         <Link to={`/menu/${dish.id}`}>        
+<<<<<<< HEAD
                             <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name}/>
                                 <CardImgOverlay>
                                     <CardTitle>{dish.name}</CardTitle>                                        
                                 </CardImgOverlay>                        
+=======
+                        <CardTitle>{dish.name}</CardTitle> 
+                            <CardImg width="50%" height="50%" src={dish.image} alt={dish.name}/>                   
+>>>>>>> a93f413
                             </Link>     
                         </Card>                                                            
                         );
