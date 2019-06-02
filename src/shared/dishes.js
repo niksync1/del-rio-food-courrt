@@ -2,7 +2,7 @@ export const DISHES =
     [
         {
         id: 0,
-        name:'bankutilapia',
+        name:'banku n grilled fish',
         image: '/assets/images/bankutilapia.jpg',
         category: 'mains',
         label:'Hot',
