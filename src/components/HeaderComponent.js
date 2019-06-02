@@ -23,21 +23,6 @@ class Header extends Component {
             isNavOpen: !this.state.isNavOpen
         });
     }
-<<<<<<< HEAD
-    toggleModal() {
-        this.setState({
-          isModalOpen: !this.state.isModalOpen
-        });
-      }
-
-      handleLogin(event) {
-        this.toggleModal();
-        alert("Username: " + this.username.value + " Password: " + this.password.value
-            + " Remember: " + this.remember.checked);
-        event.preventDefault();
-      }
-
-=======
 
     toggleModal(){
             this.setState({
@@ -50,7 +35,6 @@ class Header extends Component {
         // this.props.loginUser({username: this.username.value, password: this.password.value});
         event.preventDefault();
     }
->>>>>>> a93f413
     render(){
         return(
             <div>                
@@ -59,11 +43,7 @@ class Header extends Component {
                             <NavbarToggler onClick={this.toggleNav} />
 
                             <NavbarBrand className="mr-auto" href="/">
-<<<<<<< HEAD
-                                < img src="./assets/images/logo.png" height="30" width="41"  alt= "Ristorante Con Fusion"/>
-=======
                                 < img src="assets/images/logo.png" height="30" width="41"  alt= "Del Rio Food Court"/>
->>>>>>> a93f413
                             </NavbarBrand>
                             <Collapse isOpen={this.state.isNavOpen} navbar>
                                 <Nav navbar>
@@ -110,11 +90,7 @@ class Header extends Component {
                                 </NavItem>
                             </Nav>
                             </Collapse>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <Button outline onClick={this.toggleModal}><span className="fa fa-sign-in fa-lg"></span> Login</Button>
-                                </NavItem>
-                            </Nav>
+                        
 
                         </div>
                     </Navbar>
@@ -130,35 +106,6 @@ class Header extends Component {
                             </div>
                         </div>
                     </Jumbotron>
-<<<<<<< HEAD
-
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                    <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
-                    <ModalBody>
-                        <Form onSubmit={this.handleLogin}>
-                            <FormGroup>
-                                <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username"
-                                    innerRef={(input) => this.username = input} />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor="password">Password</Label>
-                                <Input type="password" id="password" name="password"
-                                    innerRef={(input) => this.password = input}  />
-                            </FormGroup>
-                            <FormGroup check>
-                                <Label check>
-                                    <Input type="checkbox" name="remember"
-                                    innerRef={(input) => this.remember = input}  />
-                                    Remember me
-                                </Label>
-                            </FormGroup>
-                            <Button type="submit" value="submit" color="primary">Login</Button>
-                        </Form>
-                    </ModalBody>
-                </Modal>
-                
-=======
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                         <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                         <ModalBody>
@@ -184,7 +131,6 @@ class Header extends Component {
                             </Form>
                         </ModalBody>
                     </Modal>
->>>>>>> a93f413
             </div>
         )}
     
