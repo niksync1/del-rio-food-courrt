@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Breadcrumb, BreadcrumbItem, Button,  Label,  Col, Row  } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {Control, Form, Errors, } from 'react-redux-form';
+import {Control, LocalForm, Errors, } from 'react-redux-form';
 
 
 const required = (val) => val && val.length;
@@ -20,8 +20,7 @@ class Contact extends Component {
         console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
         // this.props.resetFeedbackForm();
-        // event.preventDefault();
-    }    
+     }    
     
     render() { 
         return(
@@ -59,7 +58,7 @@ class Contact extends Component {
                         <div className="col-12 col-sm-11 offset-sm-1">
                             <div className="btn-group" role="group">
                                 <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
-                                <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
+                                <a role="button" className="btn btn-info" href="tel:+85212345678"><i className="fa fa-skype"></i> Skype</a>
                                 <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
                             </div>
                         </div>
@@ -69,8 +68,8 @@ class Contact extends Component {
                         <div className="col-12">
                             <h3>Send us your Feedback</h3>
                         </div>
-                        {/* <div className="col-12 col-md-9">
-                            <Form onSubmit={(values)=>this.handleSubmit(values)}>
+                        <div className="col-12 col-md-9">
+                            <LocalForm onSubmit={(values)=>this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -131,7 +130,7 @@ class Contact extends Component {
                                         show="touched"
                                         messages={{
                                             required: 'Required',
-                                            minLength: 'Must be greater than 2 numbers',
+                                            minLength: 'Must be greater than 2 numbers. ',
                                             maxLength: 'Must be 15 numbers or less',
                                             isNumber: 'Must be a number'
                                         }}
@@ -196,8 +195,8 @@ class Contact extends Component {
                                         </Button>
                                     </Col>
                                 </Row>
-                            </Form>
-                        </div> */}
+                            </LocalForm>
+                        </div>
                     </div>
                 </div>
             

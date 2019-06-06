@@ -46,8 +46,8 @@ export const LEADERS = [
     },
     {
       id: 5,
-      name: 'Abigail',
-      image: '/assets/images/alberto.png',
+      name: 'Abigail Nique',
+      image: '/assets/images/abi.jpg',
       designation: 'Line leader: Banku and Pastries ',
       abbr: 'FC',
         featured: false,
