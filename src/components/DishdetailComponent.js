@@ -10,6 +10,9 @@ import { baseUrl } from '../shared/baseUrl';
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 const required = (val) => val && val.length;
+
+const isNumber = (val) => !isNaN(Number(val));
+const minValue = min => value => value && value < min ? `Must be at least ${min}` : undefined
     function RenderDish ({dish}) {            
         return (
             <div className="col-12 col-md-5 m-1">
@@ -25,13 +28,15 @@ const required = (val) => val && val.length;
 
     }
 
-    function RenderOrder ({dishId}) {            
+    function RenderOrder ({dish,dishId, addOrder}) {            
         return (
             <div className="col-12 col-md-5 m-1">
-            <Card>
-               
+            <Card>               
                 <CardBody>
-                <OrderForm dishId={dishId} />
+                <OrderForm dishId={dishId}
+                             dish={dish} 
+                            addOrder={addOrder} 
+                              />
                 </CardBody>
             </Card>
             </div>
@@ -42,7 +47,7 @@ class OrderForm extends Component{
         super(props);
    
         this.toggleModal = this.toggleModal.bind(this);
-        this.handleSubmit= this.handleSubmit.bind(this);
+        this.handleOrderSubmit= this.handleOrderSubmit.bind(this);
 
         this.state = {
             isModalOpen: false,
@@ -56,9 +61,9 @@ class OrderForm extends Component{
         });
     }
 
-    handleSubmit(values) {
+    handleOrderSubmit(values) {
         this.toggleModal();
-        // this.props.addOrder(this.props.dishId, values.rating, values.author, values.comment)    
+        this.props.addOrder(this.props.dishId, values.size, values.ordernumber, values.details, values.author, values.location, values.contacttype, values.phonenumber)    
     }
 
     render(){
@@ -68,11 +73,11 @@ class OrderForm extends Component{
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                 <ModalBody> 
-                    <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                    <LocalForm onSubmit={(values) => this.handleOrderSubmit(values)}>
                     <Row className="form-group">
                             <Col>
                             <h6>Kindly fill and submit the details of your order <br/> and we will call back to confirm </h6>
-                            <p>{this.props.dishId}</p>
+                            <p>Ready to place your {this.props.dish.name} order?</p>
                             </Col>
                     </Row>
                         
@@ -91,9 +96,9 @@ class OrderForm extends Component{
                         </Row>
                         <Row className="form-group">
                             <Col>
-                            <Label htmlFor="rating" md={5}>Number of meals</Label>
-                            <Control.select model=".rating"
-                                            name="rating"
+                            <Label htmlFor="ordernumber" md={5}>Number of meals</Label>
+                            <Control.select model=".ordernumber"
+                                            name="ordernumber"
                                             className="form-control">                  
                                             <option selected >1</option>
                                             <option >2</option>
@@ -104,11 +109,11 @@ class OrderForm extends Component{
                             </Col>
                         </Row>
                         <Row className="form-group">
-                                        <Label htmlFor="message" md={5}>Further details</Label>
+                                        <Label htmlFor="details" md={5}>Further details</Label>
                                 </Row>
                                 <Row className="form-group">
                                     <Col md={10}>
-                                        <Control.textarea model=".comment" id="comment" name="comment"
+                                        <Control.textarea model=".details" id="details" name="details"
                                             rows="2"
                                             className="form-control" />                                      
                                     </Col>
@@ -138,11 +143,11 @@ class OrderForm extends Component{
                                 </Col>
                         </Row>                               
                         <Row className="form-group">
-                                <Label htmlFor="author" md={5}>Your Location</Label>
+                                <Label htmlFor="location" md={5}>Your Location</Label>
                         </Row>
                         <Row className="form-group">
                                 <Col md={10}>
-                                    <Control.text model=".author" id="name" name="name"
+                                    <Control.text model=".location" id="location" name="location"
                                         placeholder="Location within Accra"
                                         className="form-control"
                                         validators={{
@@ -161,6 +166,41 @@ class OrderForm extends Component{
                                     />
                                 </Col>
                         </Row> 
+                        <Row className="form-group">
+                            <Col>
+                            <Label htmlFor="contacttype" md={5}>how may we contact you</Label>
+                            <Control.select model=".contacttype"
+                                            name="contacttype"
+                                            className="form-control">                  
+                                            <option selected >Mobile</option>
+                                            <option >Whatsapp</option>
+                                            
+                            </Control.select>  
+                            </Col>
+                        </Row>
+                            <Row>
+                            <Col md={6}>
+                                    <Control.text model=".phonenumber" id="phonenumber" name="phonenumber"
+                                        placeholder="phonenumber"
+                                        className="form-control"
+                                        validators={{
+                                            required, minLength: minLength(10), maxLength: maxLength(15),isNumber
+                                        }}
+                                        />
+                                    <Errors
+                                        className="text-danger"
+                                        model=".phonenumber"
+                                        show="touched"
+                                        messages={{
+                                            required: 'Required',
+                                            minLength: 'Must be greater than 10 characters',
+                                            maxLength: 'Must be 15 characters or less',
+                                            isNumber: 'Must be a number'
+
+                                        }}
+                                    />
+                            </Col>
+                        </Row>
                                 <Row className="form-group">
                                     <Col md={{size: 10}}>
                                         <Button type="submit" onClick={this.toggleModal} color="primary">
@@ -177,7 +217,7 @@ class OrderForm extends Component{
     }
 
 }
-    function RenderComments({comments, dishId}) {
+    function RenderComments({comments,addComment, dishId}) {
         if (comments != null)
             return(
                 <div className="col-12 col-md-5 ">
@@ -194,7 +234,7 @@ class OrderForm extends Component{
                     })}
                     </ul>
                     <CommentForm dishId={dishId} 
-                                // addComment={addComment} 
+                                addComment={addComment} 
                                 />
                 </div>
             );
@@ -226,7 +266,7 @@ class OrderForm extends Component{
 
         handleSubmit(values) {
             this.toggleModal();
-            // this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)    
+            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)    
         }
 
         render(){
@@ -237,13 +277,6 @@ class OrderForm extends Component{
                     <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                     <ModalBody> 
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-                        <Row className="form-group">
-                                <Col>
-                                <h6>Kindly fill and submit the details of your order and we will call back to confirm </h6>
-                                <p>{this.props.dishId}</p>
-                                </Col>
-                        </Row>
-                            
                             <Row className="form-group">
                                 <Col>
                                 <Label htmlFor="rating" md={5}>Rating</Label>
@@ -345,13 +378,13 @@ const DishDetail = (props) => {
                 <div className="row">
                     <RenderDish dish={props.dish} />
                     <RenderOrder dishId={props.dish.id}
-                     // addOrder={props.addOrder}
-                     />          
+                                addOrder={props.addOrder}
+                                dish={props.dish}/>          
                     
                 </div>         
                 <div className="row">                    
                     <RenderComments comments={props.comments} 
-                                    // addComment={props.addComment}
+                                    addComment={props.addComment}
                                     dishId={props.dish.id}  />
                 </div>       
             </div>
