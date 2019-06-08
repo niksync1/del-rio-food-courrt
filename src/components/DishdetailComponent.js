@@ -12,7 +12,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
 const required = (val) => val && val.length;
 
 const isNumber = (val) => !isNaN(Number(val));
-const minValue = min => value => value && value < min ? `Must be at least ${min}` : undefined
+const minValue = min => value => value && value < min ? `Must be at least ${min}` : undefined;
     function RenderDish ({dish}) {            
         return (
             <div className="col-12 col-md-5 m-1">
