@@ -1,8 +1,9 @@
-import { ORDERS } from '../shared/orders';
+// import { ORDERS } from '../shared/orders';
 import * as ActionTypes from './ActionTypes';
 
 
-export const Orders = (state = ORDERS, action) => {
+export const Orders = (state = {errMess: null,orders:[]}
+    , action) => {
     switch (action.type) {
         
         case ActionTypes.ADD_ORDER:

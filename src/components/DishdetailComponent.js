@@ -13,11 +13,12 @@ const required = (val) => val && val.length;
 
 const isNumber = (val) => !isNaN(Number(val));
 const minValue = min => value => value && value < min ? `Must be at least ${min}` : undefined;
-    function RenderDish ({dish}) {            
+  
+function RenderDish ({dish}) {            
         return (
             <div className="col-12 col-md-5 m-1">
             <Card>
-                <CardImg top src={ dish.image} alt={dish.name} />
+                <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                 <CardBody>
                     <CardTitle>{dish.name}</CardTitle>
                     <CardText>{dish.description}</CardText>
@@ -28,14 +29,14 @@ const minValue = min => value => value && value < min ? `Must be at least ${min}
 
     }
 
-    function RenderOrder ({dish,dishId, addOrder}) {            
+    function RenderOrder ({dish,dishId, postOrder}) {            
         return (
             <div className="col-12 col-md-5 m-1">
             <Card>               
                 <CardBody>
-                <OrderForm dishId={dishId}
+                <OrderForm dishId={dish.id}
                              dish={dish} 
-                            addOrder={addOrder} 
+                            postOrder={postOrder} 
                               />
                 </CardBody>
             </Card>
@@ -63,7 +64,7 @@ class OrderForm extends Component{
 
     handleOrderSubmit(values) {
         this.toggleModal();
-        this.props.addOrder(this.props.dishId, values.size, values.ordernumber, values.details, values.author, values.location, values.contacttype, values.phonenumber)    
+        this.props.postOrder(this.props.dishId, values.size, values.ordernumber, values.details, values.author, values.location, values.contacttype, values.phonenumber)    
     }
 
     render(){
@@ -123,7 +124,7 @@ class OrderForm extends Component{
                         </Row>
                         <Row className="form-group">
                                 <Col md={10}>
-                                    <Control.text model=".author" id="name" name="name"
+                                    <Control.text model=".author" id="author" name="author"
                                         placeholder="Your Name"
                                         className="form-control"
                                         validators={{
@@ -344,25 +345,25 @@ class OrderForm extends Component{
 }
 
 const DishDetail = (props) => {
-    // if (props.isLoading) {
-    //     return(
-    //         <div className="container">
-    //             <div className="row">            
-    //                 <Loading />
-    //             </div>
-    //         </div>
-    //     );
-    // }
-    // else if (props.errMess) {
-    //     return(
-    //         <div className="container">
-    //             <div className="row">            
-    //                 <h4>{props.errMess}</h4>
-    //             </div>
-    //         </div>
-    //     );
-    // }
-    // else if (props.dish != null) 
+    if (props.isLoading) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <Loading />
+                </div>
+            </div>
+        );
+    }
+    else if (props.errMess) {
+        return(
+            <div className="container">
+                <div className="row">            
+                    <h4>{props.errMess}</h4>
+                </div>
+            </div>
+        );
+    }
+    else if (props.dish != null) 
         return (
             <div className="container">
                 <div className="row">
@@ -390,10 +391,10 @@ const DishDetail = (props) => {
             </div>
 
         );
-    // else
-    //     return(
-    //         <div></div>
-    //     )
+    else
+        return(
+            <div></div>
+        )
 }
 
 export default DishDetail;

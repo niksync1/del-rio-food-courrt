@@ -35,15 +35,7 @@ export const LEADERS = [
         featured: false,
       description: 'Blessed with the most discerning gustatory sense, Agumbe, our CFO, personally ensures that every dish that we serve meets his exacting tastes. Our chefs dread the tongue lashing that ensues if their dish does not meet his exacting standards. He lives by his motto, You click only if you survive my lick.'
     },
-    {
-      id: 4,
-      name: 'Dinah',
-      image: '/assets/images/alberto.png',
-      designation: 'Rice Chef ',
-      abbr: 'FC',
-        featured: false,
-      description: 'Blessed with the most discerning gustatory sense, Agumbe, our CFO, personally ensures that every dish that we serve meets his exacting tastes. Our chefs dread the tongue lashing that ensues if their dish does not meet his exacting standards. He lives by his motto, You click only if you survive my lick.'
-    },
+    
     {
       id: 5,
       name: 'Abigail Nique',
