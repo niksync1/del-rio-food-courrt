@@ -1,20 +1,54 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
-export const ADD_DISHES = 'ADD_DISHES';
+// export const ADD_DISHES = 'ADD_DISHES';
 
-export const postComment = (dishId, rating, author, comment) => ({
+export const addComment = ( comment) => ({
     type: ActionTypes.ADD_COMMENT,
-    payload: {
+    payload: comment
+});
+
+export const postComment = (dishId, rating, author, comment) => (dispatch) => {
+    const newComment = { 
         dishId: dishId,
         rating: rating,
         author: author,
         comment: comment
-    }
-});
-export const postOrder = (dishId, size, ordernumber,details, author, location, contacttype, phonenumber) => ({
+    };
+    newComment.date = new Date().toISOString();
+
+    return fetch(baseUrl + 'comments', {
+        method: "POST", 
+        body:JSON.stringify(newComment),
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        credentials:"same-origin"
+    })
+    .then(response => {
+        if (response.ok){
+            return response;            
+        } else {
+            var error = new Error ('Error' + response.status + ': ' + response.statusText);
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addComment(response)))
+    .catch(error => { console.log('post comments', error.message); alert('Your comment could not be posted \nError: ' + error.message); });
+};
+
+export const addOrder = ( order) => ({
     type: ActionTypes.ADD_ORDER,
-    payload: {
+    payload: order
+});
+
+export const postOrder = (dishId, size, ordernumber,details, author, location, contacttype, phonenumber) =>(dispatch) => {
+    const newOrder = {       
         dishId: dishId,
         size: size,
         ordernumber: ordernumber,
@@ -23,8 +57,35 @@ export const postOrder = (dishId, size, ordernumber,details, author, location, c
         location:location,
         contacttype:contacttype,
         phonenumber: phonenumber,
-    }
-});
+    };
+    newOrder.date = new Date().toISOString();
+
+    return fetch(baseUrl + 'orders', {
+        method: "POST", 
+        body:JSON.stringify(newOrder),
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        credentials:"same-origin"
+    })
+    .then(response => {
+        if (response.ok){
+            return response;            
+        } else {
+            var error = new Error ('Error' + response.status + ': ' + response.statusText);
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addOrder(response)))
+    .catch(error => { console.log('post order', error.message); alert('Your order could not be posted \nError: ' + error.message); });
+};
+
+
 
 export const fetchDishes = () => (dispatch) => {
     dispatch(dishesLoading(true));

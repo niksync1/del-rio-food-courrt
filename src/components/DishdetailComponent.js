@@ -5,20 +5,19 @@ import { Card, CardImg, CardText, CardBody,
 import {Link} from 'react-router-dom';
 import {Control, LocalForm, Errors} from 'react-redux-form';
 import { Loading } from './LoadingComponent';
-import { baseUrl } from '../shared/baseUrl';
+// import { baseUrl } from '../shared/baseUrl';
 
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 const required = (val) => val && val.length;
 
 const isNumber = (val) => !isNaN(Number(val));
-const minValue = min => value => value && value < min ? `Must be at least ${min}` : undefined;
   
 function RenderDish ({dish}) {            
         return (
             <div className="col-12 col-md-5 m-1">
             <Card>
-                <CardImg top src={baseUrl + dish.image} alt={dish.name} />
+                <CardImg top src={dish.image} alt={dish.name} />
                 <CardBody>
                     <CardTitle>{dish.name}</CardTitle>
                     <CardText>{dish.description}</CardText>
@@ -204,7 +203,7 @@ class OrderForm extends Component{
                         </Row>
                                 <Row className="form-group">
                                     <Col md={{size: 10}}>
-                                        <Button type="submit" onClick={this.toggleModal} color="primary">
+                                        <Button type="submit" color="primary">
                                             Submit
                                         </Button>
                                     </Col>
@@ -218,7 +217,7 @@ class OrderForm extends Component{
     }
 
 }
-    function RenderComments({comments,addComment, dishId}) {
+    function RenderComments({comments,postComment, dishId}) {
         if (comments != null)
             return(
                 <div className="col-12 col-md-5 ">
@@ -235,7 +234,7 @@ class OrderForm extends Component{
                     })}
                     </ul>
                     <CommentForm dishId={dishId} 
-                                addComment={addComment} 
+                                postComment={postComment} 
                                 />
                 </div>
             );
@@ -267,7 +266,7 @@ class OrderForm extends Component{
 
         handleSubmit(values) {
             this.toggleModal();
-            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)    
+            this.props.postComment(this.props.dishId, values.rating, values.author, values.comment)    
         }
 
         render(){
@@ -329,7 +328,7 @@ class OrderForm extends Component{
         
                                     <Row className="form-group">
                                         <Col md={{size: 10}}>
-                                            <Button type="submit" onClick={this.toggleModal} color="primary">
+                                            <Button type="submit" color="primary">
                                                 Submit
                                             </Button>
                                         </Col>
@@ -379,13 +378,13 @@ const DishDetail = (props) => {
                 <div className="row">
                     <RenderDish dish={props.dish} />
                     <RenderOrder dishId={props.dish.id}
-                                addOrder={props.addOrder}
+                                postOrder={props.postOrder}
                                 dish={props.dish}/>          
                     
                 </div>         
                 <div className="row">                    
                     <RenderComments comments={props.comments} 
-                                    addComment={props.addComment}
+                                    postComment={props.postComment}
                                     dishId={props.dish.id}  />
                 </div>       
             </div>
